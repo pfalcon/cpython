@@ -4618,7 +4618,9 @@ makecode(struct compiler *c, struct assembler *a)
     if (flags < 0)
         goto error;
 
-    bytecode = PyCode_Optimize(a->a_bytecode, consts, names, a->a_lnotab);
+    //bytecode = PyCode_Optimize(a->a_bytecode, consts, names, a->a_lnotab);
+    bytecode = a->a_bytecode;
+    Py_INCREF(bytecode);
     if (!bytecode)
         goto error;
 
